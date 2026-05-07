@@ -302,7 +302,7 @@ body{font-size:20px!important;}
 .sb-label{font-size:11.5px!important;}
 .site-footer,.site-footer p{font-size:15px!important;}
 </style>
-<meta name="wy-protection-86" content="v1-L1L8-silent">
+<meta name="wy-protection-86" content="v2-failclosed">
 <meta name="robots" content="noai, noimageai, noarchive, noimageindex">
 <meta name="googlebot" content="noai, noimageai">
 <meta name="googlebot-news" content="noai, noimageai">
@@ -313,26 +313,43 @@ body{font-size:20px!important;}
 <meta name="CCBot" content="noai">
 <meta name="anthropic-ai" content="noai">
 <meta name="Claude-Web" content="noai">
-<style id="wy-preguard">html.wy-preguard,html.wy-preguard body{visibility:hidden!important}</style>
+<style id="wy-preguard">
+/* === FAIL-CLOSED · 預設整頁隱藏，JS 條件揭露 === */
+html{visibility:hidden!important}
+html body{visibility:hidden!important}
+/* 多一道：用 opacity + pointer-events 雙層遮罩，確保即使有人改 visibility 也擋住 */
+html:not(.wy-revealed){visibility:hidden!important;opacity:0!important}
+html:not(.wy-revealed) body{visibility:hidden!important;opacity:0!important;pointer-events:none!important}
+html.wy-revealed{visibility:visible!important;opacity:1!important}
+html.wy-revealed body{visibility:visible!important;opacity:1!important;pointer-events:auto!important}
+</style>
 <style id="wy-l3-print">
 @media print{
   html,body{background:#fff!important;}
   body,body *{visibility:hidden!important;display:none!important;}
-  body::after{
-    content:"";display:block!important;visibility:visible!important;
-    width:100%;height:100vh;background:#fff;
-  }
+  body::after{content:"";display:block!important;visibility:visible!important;
+    width:100%;height:100vh;background:#fff;}
 }
 @page{margin:0;size:auto;}
 </style>
-<script>document.documentElement.classList.add('wy-preguard');</script>
 </head>
 <body oncontextmenu="return false" oncopy="return false" oncut="return false" onselectstart="return false" ondragstart="return false">
-<script id="wy-protection-bundle">
+<script id="wy-protection-bundle-v2">
 (function(){
   'use strict';
   var ALLOWED_HOST = 'weiwen0925.github.io';
   var ALLOWED_PATH = '/dazhidulun-86/';
+
+  // ========== L2 · 列印攔截（先做，不影響後續流程） ==========
+  try{
+    Object.defineProperty(window,'print',{value:function(){},writable:false,configurable:false});
+  }catch(e){ try{ window.print=function(){}; }catch(e2){} }
+  document.addEventListener('keydown',function(e){
+    var k = e.key;
+    if((e.metaKey || e.ctrlKey) && (k === 'p' || k === 'P' || k === 's' || k === 'S' || k === 'u' || k === 'U')){
+      e.preventDefault(); e.stopPropagation();
+    }
+  },true);
 
   // ========== B · webdriver / headless 偵測 ==========
   function _isAutomated(){
@@ -345,33 +362,12 @@ body{font-size:20px!important;}
     return false;
   }
 
-  // ========== 靜默封鎖：保持 preguard，永遠不揭露 body ==========
-  function _silentLock(){
-    // 不替換 innerHTML、不顯示警語；body 永遠保持 visibility:hidden
-    try{ document.documentElement.classList.add('wy-locked'); }catch(e){}
-  }
-
-  // ========== L2 · 列印攔截 ==========
-  try{
-    window.print = function(){};
-    Object.defineProperty(window,'print',{value:function(){},writable:false,configurable:false});
-  }catch(e){}
-  document.addEventListener('keydown',function(e){
-    var k = e.key;
-    if((e.metaKey || e.ctrlKey) && (k === 'p' || k === 'P')){
-      e.preventDefault(); e.stopPropagation();
-    }
-    // 額外：⌘S / Ctrl+S（另存）、⌘U（檢視原始碼）也擋
-    if((e.metaKey || e.ctrlKey) && (k === 's' || k === 'S' || k === 'u' || k === 'U')){
-      e.preventDefault(); e.stopPropagation();
-    }
-  },true);
-
-  // ========== L4 · Origin Lock（同步檢查） ==========
+  // ========== L4 · Origin Lock ==========
   function _checkOrigin(){
     try{
       var h = (location.hostname||'').toLowerCase();
       var p = location.pathname||'';
+      if(location.protocol !== 'https:' && location.protocol !== 'http:') return false;
       if(h !== ALLOWED_HOST.toLowerCase()) return false;
       if(p.indexOf(ALLOWED_PATH) !== 0) return false;
       return true;
@@ -385,46 +381,30 @@ body{font-size:20px!important;}
         var ts = Date.now() + '.' + Math.random().toString(36).slice(2);
         var url = location.protocol + '//' + ALLOWED_HOST + ALLOWED_PATH + '?_wyping=' + ts;
         var done = false;
-        var timer = setTimeout(function(){
-          if(done) return;
-          done = true; resolve(false);
-        }, 6000);
+        var timer = setTimeout(function(){ if(!done){ done=true; resolve(false); } }, 6000);
         fetch(url, {method:'HEAD', cache:'no-store', credentials:'omit'})
-          .then(function(r){
-            if(done) return;
-            done = true; clearTimeout(timer);
-            resolve(r && r.ok ? true : false);
-          })
-          .catch(function(){
-            if(done) return;
-            done = true; clearTimeout(timer);
-            resolve(false);
-          });
+          .then(function(r){ if(!done){ done=true; clearTimeout(timer); resolve(!!(r && r.ok)); } })
+          .catch(function(){ if(!done){ done=true; clearTimeout(timer); resolve(false); } });
       }catch(e){ resolve(false); }
     });
   }
 
-  // ========== 主流程：B → L4 → L6 → reveal ==========
-  if(_isAutomated()){
-    _silentLock();
-    return;
-  }
-  if(!_checkOrigin()){
-    _silentLock();
-    return;
+  function _reveal(){
+    try{
+      document.documentElement.classList.add('wy-revealed');
+      window.__wyOriginOK = true;
+    }catch(e){}
   }
 
-  // __wyReady promise（其他層可掛 .then）
-  window.__wyReady = new Promise(function(resolve, reject){
+  // ========== 主流程：B → L4 → L6 → reveal ==========
+  // 任何一道失敗都「不揭露」（保持 visibility:hidden），無警語。
+  if(_isAutomated())     return;
+  if(!_checkOrigin())    return;
+
+  window.__wyReady = new Promise(function(resolve){
     _checkLiveness().then(function(ok){
-      if(!ok){ _silentLock(); return; }
-      // 通過：移除 preguard，揭露 body
-      try{
-        document.documentElement.classList.remove('wy-preguard');
-        var pg = document.getElementById('wy-preguard');
-        if(pg) pg.parentNode.removeChild(pg);
-        window.__wyOriginOK = true;
-      }catch(e){}
+      if(!ok) return;          // L6 失敗：不揭露
+      _reveal();
       resolve(true);
     });
   });
