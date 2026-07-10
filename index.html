@@ -815,5 +815,58 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")MODAL.classL
 upd();var c=0,iv=setInterval(function(){upd();if(++c>40)clearInterval(iv);},250);
 })();</script>
 <!--WY-C86P1:END-->
+<!--WY-C86P2:BEGIN-->
+<style id="wy-c86p2-css">
+.c86p2-fabbox{position:fixed;right:22px;bottom:78px;z-index:121;display:none;}
+.c86p2-fabbox.show{display:block;}
+.c86p2-btn{display:inline-flex;align-items:center;gap:9px;font-family:"Noto Sans TC",sans-serif;letter-spacing:.5px;color:#f7ecd2;background:linear-gradient(135deg,#573f38,#2e2420);padding:8px 15px;border-radius:22px;border:1px solid rgba(184,134,11,.6);box-shadow:0 4px 16px rgba(0,0,0,.3);cursor:pointer;opacity:.96;transition:opacity .3s,transform .2s,box-shadow .2s;}
+.c86p2-btn:hover{opacity:1;transform:translateY(-2px);box-shadow:0 6px 22px rgba(184,134,11,.5);}
+.c86p2-ic{font-size:15px;line-height:1;color:#ecc978;}
+.c86p2-ls{display:flex;flex-direction:column;align-items:flex-start;line-height:1.22;}
+.c86p2-l1{font-size:10.5px;font-weight:500;opacity:.82;white-space:nowrap;}
+.c86p2-l2{font-size:13px;font-weight:700;color:#faf1d8;white-space:nowrap;}
+.c86p2-modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;background:rgba(28,20,12,.58);padding:16px;}
+.c86p2-modal.open{display:flex;}
+.c86p2-card{position:relative;background:#fbf7ee;max-width:900px;width:100%;max-height:88vh;overflow:auto;border:1px solid #d8c8ac;border-radius:14px;padding:30px 24px 22px;box-shadow:0 18px 50px rgba(0,0,0,.4);}
+.c86p2-card h3{margin:0 0 2px;font-family:"Noto Serif TC",serif;font-size:20px;color:#8b5e3c;}
+.c86p2-card .sub{margin:0 0 14px;font-family:"Noto Sans TC",sans-serif;font-size:13px;color:#6b5b4b;}
+.c86p2-close{position:absolute;top:12px;right:16px;width:34px;height:34px;border:none;border-radius:50%;background:#efe6d4;color:#8b5e3c;font-size:22px;line-height:1;cursor:pointer;z-index:2;}
+.c86p2-close:hover{background:#e3d5b8;}
+.c86p2-tbl{width:100%;border-collapse:collapse;font-family:"Noto Sans TC",sans-serif;font-size:13px;margin:.3em 0 1.2em;}
+.c86p2-tbl caption{font-family:"Noto Serif TC",serif;font-weight:700;color:#8b5e3c;font-size:14.5px;text-align:left;margin:.6em 0 .35em;line-height:1.5;}
+.c86p2-tbl th,.c86p2-tbl td{border:1px solid #d8c8ac;padding:.45em .6em;text-align:left;vertical-align:top;line-height:1.6;}
+.c86p2-tbl thead th{background:#8b5e3c;color:#f7ecd2;font-weight:700;}
+.c86p2-tbl td:first-child{white-space:nowrap;color:#8b5e3c;font-weight:700;background:#f0e8d8;}
+.c86p2-tbl tbody tr:nth-child(even) td{background:#f6efe0;}
+.c86p2-tbl b{color:#8b2500;}
+.c86p2-note{font-size:12px;color:#5a4e3a;line-height:1.9;background:#f6efe0;border-left:3px solid #c4956a;border-radius:0 6px 6px 0;padding:10px 13px;margin:4px 0 0;}
+.c86p2-note b{color:#8b2500;}
+@media(max-width:900px){.c86p2-fabbox{right:14px;}.c86p2-tbl{font-size:11.5px;}.c86p2-card{padding:26px 14px 16px;}}
+</style>
+<div class="c86p2-fabbox" id="c86p2Box"><button class="c86p2-btn" id="c86p2Btn" type="button" aria-label="開啟全景總表"><span class="c86p2-ic">▦</span><span class="c86p2-ls"><span class="c86p2-l1">本品 · 空為基石</span><span class="c86p2-l2">空性與階次・以無受統攝有修・真空出妙有</span></span></button></div><div class="c86p2-modal" id="c86p2Modal" role="dialog" aria-modal="true" aria-label="全景總表"><div class="c86p2-card"><button class="c86p2-close" id="c86p2Close" type="button" aria-label="關閉">×</button><h3>卷八十六・第二品 釋次第學品第七十五 全景總表</h3><p class="sub">卷八十六・第二品｜空性與階次悖論・一法異門・菩薩順忍本體翻轉・以無受統攝有修・依四禪起五神通・空為修行唯一前提・二諦圓融真空出妙有</p><table class="c86p2-tbl"><caption>一、空性階次悖論與本體論翻轉（第一至三章）</caption><thead><tr><th>環節</th><th>內容</th></tr></thead><tbody><tr><td>開幕之問・空性與階次的悖論</td><td>《大智度論》行至卷八十六，般若法門已近尾聲。次第學品開卷，須菩提替一切將行般若的眾生，問出最尖銳的一刀：若諸法畢竟空、無有法相，修行的階次、煩惱的斷除、佛果的成就是否還能成立？本章先定位卷品源流，再呈現須菩提的開幕之問與這場「空性vs階次」的悖論，最後由論主釋疑何以須菩提須種種因緣、反覆重問</td></tr><tr><td>一法異門・空為成立之基</td><td>承上章「種種因緣重問」之疑，本章揭示其底層機制：般若無一定相，一理而異門。「畢竟空」如一把萬能鑰匙，因眾生所執之「鎖」不同而開出不同門徑；再引《中論・觀四諦品》「以有空義故，一切法得成」，確立中觀元定理——空性非破壞者，而是支撐五道、三乘、八地一切現象得以成立的底層邏輯</td></tr><tr><td>菩薩順忍・本體論的全面翻轉</td><td>承上章「空為成立之基」，本章落實到本體論的判準。佛陀重新定義「有」與「無」：菩薩順忍，是於一切法中不生「有相」、亦不生「非法相」；而「有法是菩薩道，無法是菩薩果」——「有」是過河的船，「無」是上岸的彼岸，由此展開有為法與無為法的雙維度對比、船筏喻的道果分離，以及「行有為道、證無為果」的權變心法</td></tr></tbody></table><table class="c86p2-tbl"><caption>二、佛陀親證與神通架構（第四至五章）</caption><thead><tr><th>環節</th><th>內容</th></tr></thead><tbody><tr><td>佛陀親證・以無受統攝有修</td><td>理上既明「有法菩薩道、無法菩薩果」，佛陀遂以親身修證為最終證據。既然一切法無所有，佛陀當年如何實修四禪八定？答案是「以無受統攝有修」：取相入定，卻不念、不受味、不取果報。本章解析初禪的雙重捨離機制、「離生」與「定生」的障礙跨度，以及「不受味」的禪修認知循環——樞紐一言以蔽之：知而不嚐，過而不留</td></tr><tr><td>神通架構・依四禪起五神通</td><td>承上章「四禪載體」，本章在其上架起五神通。五神通並非炫耀的奇蹟，而是精準的診斷工具：宿命通、天眼通把眾生的業力「數據化」，菩薩讀取的是冷靜精確的「業行本末」；由此數據洞察，必然導向破除輪迴的大悲行動，再以「一念相應慧」瞬間通達四諦，貫徹「演戲不入戲」的無作心法</td></tr></tbody></table><table class="c86p2-tbl"><caption>三、終極叩問與二諦圓融（第六至七章）</caption><thead><tr><th>環節</th><th>內容</th></tr></thead><tbody><tr><td>終極叩問・空為修行的唯一前提</td><td>本章是全品的邏輯高潮。須菩提把疑情推到極限：若諸法無所有，佛當年如何起四禪、六神通？又如何分別眾生作三聚？佛陀以「歸謬法」回應——假設諸欲、不善法「實有自性／他性」，則煩惱固態不可改，菩薩將永遠無法「離欲」、入不了初禪。正因為是假的（空），所以能修真，完成本體論的終極翻轉：「空」不是修行的障礙，而是唯一前提</td></tr><tr><td>二諦圓融・真空出妙有</td><td>本章收束全品。須菩提最後一問：以四禪、六神通是「有」，云何於「空」得自在力？佛陀的回答是二諦圓融——正因不被諸法實有所綁架（勝義諦／空），才能毫無阻礙地運用諸法度眾（世俗諦／有）；再以「因果皆空的光明弧線」證成起點是空、過程是空、終點亦是清淨無染的空，終於「真空出妙有」的終極洞見，並以中觀實踐模型總覽表將全品藍圖全景展開</td></tr></tbody></table><p class="c86p2-note">本品以須菩提「空性與階次」的悖論揭幕：若諸法畢竟空，修行次第、斷惑、成佛豈非虛設？佛陀先以「一法異門」化解——畢竟空如萬能鑰匙，因眾生執鎖不同而異門而入，並引《中論》「以有空義故，一切法得成」確立空性為一切現象成立之基，非破壞者。菩薩順忍完成本體論翻轉：「有法是菩薩道，無法是菩薩果」，如過河之船與彼岸，展開行有為道、證無為果的權變心法。佛陀更以親身修證為終極證據，「以無受統攝有修」——取相入定卻不念不受味不取果報，五神通則是精準的業力數據診斷工具而非炫技奇蹟。終極叩問以歸謬法證成「空」非修行障礙而是唯一前提：若諸法實有自性，煩惱固態不可改，菩薩將永不能離欲；終以二諦圓融收束全品——不被諸法實有綁架（勝義諦），方能無礙運用諸法度眾（世俗諦），因果皆空的光明弧線起訖皆清淨無染，正是「真空出妙有」的終極洞見。</p></div></div>
+<script id="wy-c86p2-js">(function(){
+var CH=document.querySelectorAll("section.chapter");
+var BTN=document.getElementById("c86p2Btn"),BOX=document.getElementById("c86p2Box"),MODAL=document.getElementById("c86p2Modal");
+if(!CH.length||!BTN||!BOX||!MODAL)return;
+var TARGET=1;
+function curIdx(){var lim=window.innerHeight*0.35,idx=-1;for(var i=0;i<CH.length;i++){if(CH[i].getBoundingClientRect().top<lim)idx=i;}return idx;}
+var FSEL="#wyVfab,.wy-vfab,#wyVideoFab,.wy-video-fab,#fabVideo,.fab-video,#wyVidFab,.wy-vid-fab,#vidFab,.vid-fab,#videoFab,#wyVideoBtn,#wyFab,#wy-fab,#vid-floating,#floatingYt,.video-fab,.wy-vbtn,.floating-yt",_fab,_ft=false;
+function fab(){if(_fab&&_fab.isConnected)return _fab;if(_ft)return _fab;_ft=true;_fab=document.querySelector(FSEL);return _fab;}
+function place(){
+  var base=null,eb=document.querySelector(".wy-ebox");
+  if(eb){var r=eb.getBoundingClientRect();if(r.height>4)base=Math.round(window.innerHeight-r.top)+8;}
+  if(base===null){var fEl=fab();if(fEl){var fr=fEl.getBoundingClientRect(),st=getComputedStyle(fEl);if(fr.height>0&&st.display!=="none"&&st.visibility!=="hidden")base=Math.round(window.innerHeight-fr.top)+10;}}
+  if(base===null)base=78;
+  BOX.style.bottom=base+"px";
+}
+function upd(){place();BOX.classList.toggle("show",curIdx()===TARGET);}
+var tk=false;function onS(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;upd();});}}
+window.addEventListener("scroll",onS,{passive:true});window.addEventListener("resize",onS);
+BTN.addEventListener("click",function(){MODAL.classList.add("open");});
+MODAL.addEventListener("click",function(e){if(e.target===MODAL||e.target.id==="c86p2Close")MODAL.classList.remove("open");});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")MODAL.classList.remove("open");});
+upd();var c=0,iv=setInterval(function(){upd();if(++c>40)clearInterval(iv);},250);
+})();</script>
+<!--WY-C86P2:END-->
 </body>
 </html>
